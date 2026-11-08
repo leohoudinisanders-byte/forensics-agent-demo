@@ -60,7 +60,7 @@ export function nextStep(challenge) {
   return [
     "",
     `This caller's free allowance is spent, so the API answered with an x402 challenge instead of a payload:`,
-    `  price  $${challenge.price_usd} (${challenge.resource ? "atomic amount in the challenge" : ""})`.replace(" ()", ""),
+    `  price  $${challenge.price_usd} USDC (${Math.round((challenge.price_usd || 0) * 1e6)} atomic units)`,
     `  payTo  ${challenge.payTo} on ${challenge.network}`,
     `  asset  ${challenge.asset}`,
     `A paying agent signs an EIP-3009 authorization and replays the request with the PAYMENT-SIGNATURE header.`,
